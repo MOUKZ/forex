@@ -11,6 +11,7 @@ class FXTMApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'FXTM Forex Tracker',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const ForexPairsPage(),

@@ -6,7 +6,7 @@ import 'package:ft/features/ticker/presentation/bloc/ticker_bloc_bloc.dart';
 import 'package:ft/features/ticker/presentation/widgets/arrow_shimmer.dart';
 import 'package:ft/features/ticker/presentation/widgets/price_shimmer.dart';
 
-import 'package:ft/pages/history_page.dart';
+import 'package:ft/features/history/presentation/widget/history_page.dart';
 
 class ForexTickerItem extends StatefulWidget {
   final ForexPair pair;

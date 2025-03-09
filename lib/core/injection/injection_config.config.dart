@@ -25,6 +25,18 @@ import '../../features/forex_pairs/presentation/forex_pairs_list/bloc/forex_pair
     as _i784;
 import '../../features/forex_pairs_bottom_nav_bar/presentation/bloc/forex_pairs_bottom_nav_bar_bloc.dart'
     as _i50;
+import '../../features/history/data/data_source/historical_data_data_source.dart'
+    as _i152;
+import '../../features/history/data/mapper/historical_data_mapper.dart'
+    as _i513;
+import '../../features/history/data/repository/historical_data_repository_impl.dart'
+    as _i635;
+import '../../features/history/domain/repository/historical_data_repository.dart'
+    as _i292;
+import '../../features/history/domain/use_case/get_historical_data_use_case.dart'
+    as _i213;
+import '../../features/history/presentation/bloc/historical_data_bloc.dart'
+    as _i388;
 import '../../features/ticker/data/data_source/web_socket_data_source.dart'
     as _i547;
 import '../../features/ticker/data/mapper/ticker_list_mapper.dart' as _i51;
@@ -55,6 +67,7 @@ extension GetItInjectableX on _i174.GetIt {
     gh.factory<_i78.GetLatestTickerDataUseCase>(
       () => _i78.GetLatestTickerDataUseCase(),
     );
+    gh.factory<_i513.HistoricalDataMapper>(() => _i513.HistoricalDataMapper());
     gh.factory<_i812.ForexPairMapper>(() => _i812.ForexPairMapper());
     gh.factory<_i50.ForexPairsBottomNavBarBloc>(
       () => _i50.ForexPairsBottomNavBarBloc(),
@@ -63,6 +76,9 @@ extension GetItInjectableX on _i174.GetIt {
     gh.lazySingleton<_i191.DioClient>(() => _i191.DioClient());
     gh.factory<_i51.TickerListMapper>(
       () => _i51.TickerListMapper(gh<_i1054.TickerMapper>()),
+    );
+    gh.factory<_i152.HistoricalDataDataSource>(
+      () => _i152.HistoricalDataDataSource(gh<_i191.DioClient>()),
     );
     gh.factory<_i268.ForexPairsRemoteDataSource>(
       () => _i268.ForexPairsRemoteDataSource(gh<_i191.DioClient>()),
@@ -73,6 +89,12 @@ extension GetItInjectableX on _i174.GetIt {
         gh<_i812.ForexPairMapper>(),
       ),
     );
+    gh.factory<_i292.HistoricalDataRepository>(
+      () => _i635.HistoricalDataRepositoryIMPL(
+        gh<_i152.HistoricalDataDataSource>(),
+        gh<_i513.HistoricalDataMapper>(),
+      ),
+    );
     gh.factory<_i949.WebSocketRepository>(
       () => _i628.WebSocketRepoImpl(
         gh<_i547.WebSocketDataSource>(),
@@ -81,6 +103,11 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i384.GetForexPairsUseCase>(
       () => _i384.GetForexPairsUseCase(gh<_i516.ForexPairsRepository>()),
+    );
+    gh.factory<_i213.HistoricalDataRepositoryUseCase>(
+      () => _i213.HistoricalDataRepositoryUseCase(
+        gh<_i292.HistoricalDataRepository>(),
+      ),
     );
     gh.factory<_i784.ForexPairsBloc>(
       () => _i784.ForexPairsBloc(gh<_i384.GetForexPairsUseCase>()),
@@ -96,6 +123,10 @@ extension GetItInjectableX on _i174.GetIt {
     );
     gh.factory<_i438.GetStreamUseCase>(
       () => _i438.GetStreamUseCase(gh<_i949.WebSocketRepository>()),
+    );
+    gh.factory<_i388.HistoricalDataBloc>(
+      () =>
+          _i388.HistoricalDataBloc(gh<_i213.HistoricalDataRepositoryUseCase>()),
     );
     gh.factory<_i670.TickerBloc>(
       () => _i670.TickerBloc(
