@@ -1,5 +1,9 @@
 # Forex & Ticker App
 
+## Disclaimer
+
+Historical data is currently limited to the symbol "AAPL" only, as access to historical data for other symbols is not available.
+
 ## Overview
 
 The Forex & Ticker App is a Flutter application demonstrating a real-world implementation of Clean Architecture, WebSocket communication, REST API integration, and state management using Bloc. The app retrieves forex pairs data from a REST API and processes ticker data via WebSocket, leveraging dependency injection for clean and testable code.
