@@ -39,8 +39,8 @@ State management is implemented with `flutter_bloc`, while network operations ar
 1. **Clone the repository:**
 
    ```bash
-   git clone <repository_url>
-   cd <repository_folder>
+   git clone https://github.com/MOUKZ/forex.git
+   cd forex
 
    ```
 
@@ -58,38 +58,39 @@ State management is implemented with `flutter_bloc`, while network operations ar
 ## Testing
 
 The app includes comprehensive unit and widget tests. To run all tests:
-```flutter pub run build_runner build --delete-conflicting-outputs
+
+````flutter pub run build_runner build --delete-conflicting-outputs
 
 ## Modules Overview
 
 ### Forex Pairs Module
 
-- **Data Source:**  
+- **Data Source:**
   Uses `dio` to fetch forex pairs from a REST API.
 
-- **Mapper:**  
+- **Mapper:**
   Converts JSON responses into `ForexPairResponse` objects.
 
-- **Repository:**  
+- **Repository:**
   Implements `ForexPairsRepository` (e.g., `ForexPairsRepositoryIMPL`) that manages data retrieval and mapping.
 
-- **Use Case:**  
+- **Use Case:**
   `GetForexPairsUseCase` calls the repository and returns a list of forex pairs.
 
-- **Tests:**  
+- **Tests:**
   Unit tests verify the correct mapping of API responses, error handling, and use case functionality.
 
 ---
 
 ### Ticker Module
 
-- **WebSocket Communication:**  
+- **WebSocket Communication:**
   `WebSocketDataSource` uses `web_socket_channel` to connect to a WebSocket endpoint.
 
-- **Data Mapping:**  
+- **Data Mapping:**
   `TickerMapper` and `TickerListMapper` convert WebSocket JSON responses into domain entities (`TickerEntity`).
 
-- **Repository:**  
+- **Repository:**
   `WebSocketRepoImpl` implements `WebSocketRepository` to handle subscription, unsubscription, and stream processing.
 
 - **Use Cases:**
@@ -99,10 +100,10 @@ The app includes comprehensive unit and widget tests. To run all tests:
   - `DisconnectUseCase` to close the connection.
   - `GetLatestTickerDataUseCase` to compute the latest ticker data.
 
-- **Bloc:**  
+- **Bloc:**
   `TickerBloc` manages UI state transitions in response to WebSocket events, subscription initialization, errors, and ticker updates.
 
-- **Tests:**  
+- **Tests:**
   Bloc and use case tests ensure proper event handling and state emission.
 
   ## Dependency Injection
@@ -141,4 +142,4 @@ Mocks for unit tests are generated using `Mockito`. To generate mocks, run:
 
 This project demonstrates a complete Flutter application using modern architecture patterns and best practices. The app covers network communication with REST APIs and WebSockets, state management with Bloc, dependency injection with Injectable, and comprehensive testing with bloc_test and Mockito.
 
-For further details, please refer to inline documentation in the source code.
+````
