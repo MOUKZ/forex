@@ -1,3 +1,4 @@
+import 'package:ft/core/constants.dart';
 import 'package:ft/core/dio/dio_client.dart';
 import 'package:ft/core/exception/forex_exceptions.dart';
 import 'package:ft/features/forex_pairs/data/response/forex_pair_reponse.dart';
@@ -11,7 +12,7 @@ class ForexPairsRemoteDataSource {
 
   Future<List<ForexPairResponse>> getForexPairs() async {
     final dioResponse = await _dio.get(
-      'https://finnhub.io/api/v1/forex/symbol?exchange=oanda&token=cv6uripr01qsq4644de0cv6uripr01qsq4644deg',
+      'https://finnhub.io/api/v1/forex/symbol?exchange=oanda&token=$key',
     );
 
     if (dioResponse.statusCode == 200) {

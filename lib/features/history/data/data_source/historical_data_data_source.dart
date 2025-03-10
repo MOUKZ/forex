@@ -1,3 +1,4 @@
+import 'package:ft/core/constants.dart';
 import 'package:ft/core/dio/dio_client.dart';
 import 'package:ft/core/exception/forex_exceptions.dart';
 import 'package:ft/features/history/data/response/historical_data_response.dart';
@@ -11,7 +12,7 @@ class HistoricalDataDataSource {
 
   Future<List<HistoricalDataResponse>> getHistoricalData(String symbol) async {
     final dioResponse = await _dio.get(
-      'https://finnhub.io/api/v1/stock/earnings?symbol=$symbol&token=cv6uripr01qsq4644de0cv6uripr01qsq4644deg',
+      'https://finnhub.io/api/v1/stock/earnings?symbol=$symbol&token=$key',
     );
 
     if (dioResponse.statusCode == 200) {
