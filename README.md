@@ -17,6 +17,7 @@ The Forex & Ticker App is a Flutter application demonstrating a real-world imple
 - [Testing](#testing)
 - [Modules Overview](#modules-overview)
   - [Forex Pairs Module](#forex-pairs-module)
+  - [Historical Data Module](#historical-data-module)
   - [Ticker Module](#ticker-module)
 - [Dependency Injection](#dependency-injection)
 - [Error Handling](#error-handling)
@@ -82,6 +83,28 @@ The app includes comprehensive unit and widget tests. To run all tests:
   `GetForexPairsUseCase` calls the repository and returns a list of forex pairs.
 
 - **Tests:**
+  Unit tests verify the correct mapping of API responses, error handling, and use case functionality.
+
+---
+
+### Historical Data Module
+
+- **Data Source:**  
+  Uses `dio` to fetch historical data from a REST API.
+
+- **Mapper:**  
+  Converts JSON responses into `HistoricalDataResponse` objects.
+
+- **Repository:**  
+  Implements `HistoricalDataRepository` (e.g., `HistoricalDataRepositoryIMPL`) that manages data retrieval and mapping.
+
+- **Use Case:**  
+  `GetHistoricalDataUseCase` calls the repository and returns a list of historical data.
+
+- **UI:**  
+  Displays the result in a chart to compare the estimate and the actual values.
+
+- **Tests:**  
   Unit tests verify the correct mapping of API responses, error handling, and use case functionality.
 
 ---
