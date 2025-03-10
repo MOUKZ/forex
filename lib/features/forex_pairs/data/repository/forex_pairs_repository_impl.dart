@@ -1,3 +1,4 @@
+import 'package:ft/core/exception/forex_exceptions.dart';
 import 'package:ft/features/forex_pairs/data/data_source/forex_pairs_data_remote_source.dart';
 import 'package:ft/features/forex_pairs/data/mapper/forex_pair_mapper.dart';
 import 'package:ft/features/forex_pairs/domain/entity/forex_pair.dart';
@@ -16,9 +17,11 @@ class ForexPairsRepositoryIMPL extends ForexPairsRepository {
     try {
       final response = await dataSource.getForexPairs();
       return mapper.map(response);
-    } catch (e) {
-      //TODO: Handle error and add mapper from data error to domain error
-      throw e;
+    } on ForexException catch (_) {
+      rethrow;
+    } on Exception catch (_) {
+      // here we can use sentry for logging
+      rethrow;
     }
   }
 }

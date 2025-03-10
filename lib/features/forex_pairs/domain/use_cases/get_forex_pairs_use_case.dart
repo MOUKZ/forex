@@ -13,7 +13,6 @@ class GetForexPairsUseCase {
       final response = await _forexPairsRepository.getForexPairs();
       return response;
     } catch (e) {
-      //TODO
       rethrow;
     }
   }
