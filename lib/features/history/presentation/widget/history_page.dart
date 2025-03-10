@@ -10,7 +10,7 @@ import 'package:syncfusion_flutter_charts/charts.dart';
 class HistoryPage extends StatefulWidget {
   final ForexPair forexPair;
 
-  HistoryPage({required this.forexPair});
+  const HistoryPage({required this.forexPair});
 
   @override
   State<HistoryPage> createState() => _HistoryPageState();

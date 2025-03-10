@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 
 import 'dart:convert';
+import 'package:ft/core/exception/forex_exceptions.dart';
 import 'package:injectable/injectable.dart';
 import 'package:web_socket_channel/io.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
@@ -44,8 +45,7 @@ class WebSocketDataSource {
       _channel!.sink.add(message);
       print('Sent: $message');
     } else {
-      //TODO throw error here faild to init
-      print('WebSocket not connected!');
+      throw UnKnownException();
     }
   }
 
@@ -57,8 +57,7 @@ class WebSocketDataSource {
       _channel!.sink.add(message);
       print('Sent: $message');
     } else {
-      //TODO throw error here faild to init
-      print('WebSocket not connected!');
+      throw UnKnownException();
     }
   }
 
