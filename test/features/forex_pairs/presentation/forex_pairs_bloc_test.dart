@@ -9,7 +9,6 @@ import 'package:ft/features/forex_pairs/presentation/forex_pairs_list/bloc/forex
 import 'package:mockito/annotations.dart';
 import 'package:mockito/mockito.dart';
 
-// Generate a mock for GetForexPairsUseCase.
 @GenerateMocks([GetForexPairsUseCase])
 import 'forex_pairs_bloc_test.mocks.dart';
 
@@ -30,7 +29,6 @@ void main() {
     blocTest<ForexPairsBloc, ForexPairsState>(
       'emits [ForexPairsLoading, ForexPairsWithData] when use case returns data',
       build: () {
-        // Arrange: stub the use case to return a list of ForexPair.
         when(mockGetForexPairsUseCase()).thenAnswer(
           (_) async => [
             ForexPair(
@@ -52,7 +50,6 @@ void main() {
     blocTest<ForexPairsBloc, ForexPairsState>(
       'emits [ForexPairsLoading, ForexPairsFailed] when use case throws an exception',
       build: () {
-        // Arrange: stub the use case to throw an exception.
         when(mockGetForexPairsUseCase()).thenThrow(Exception('Test error'));
         return forexPairsBloc;
       },

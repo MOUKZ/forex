@@ -1,5 +1,3 @@
-// ignore_for_file: avoid_print
-
 import 'dart:convert';
 import 'package:ft/core/exception/forex_exceptions.dart';
 import 'package:injectable/injectable.dart';
@@ -22,13 +20,11 @@ class WebSocketDataSource {
 
   Stream? _stream;
 
-  /// Connects to the WebSocket server if not already connected.
   Future<void> connect() async {
     final url = 'wss://ws.finnhub.io?token=$_key';
     if (_channel == null) {
       _channel = IOWebSocketChannel.connect(Uri.parse(url));
       _stream = _channel!.stream.asBroadcastStream();
-      print('Connected to WebSocket at $url');
     }
   }
 
@@ -43,7 +39,6 @@ class WebSocketDataSource {
     if (_channel != null) {
       final message = jsonEncode({'type': 'subscribe', 'symbol': symbol});
       _channel!.sink.add(message);
-      print('Sent: $message');
     } else {
       throw UnKnownException();
     }
@@ -55,19 +50,16 @@ class WebSocketDataSource {
     if (_channel != null) {
       final message = jsonEncode({'type': 'unsubscribe', 'symbol': symbol});
       _channel!.sink.add(message);
-      print('Sent: $message');
     } else {
       throw UnKnownException();
     }
   }
 
-  /// Closes the WebSocket connection.
   Future<void> close() async {
     if (_channel != null) {
       _channel!.sink.close();
       _channel = null;
       _stream = null;
-      print('WebSocket connection closed');
     }
   }
 }
