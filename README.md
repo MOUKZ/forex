@@ -63,7 +63,7 @@ State management is implemented with `flutter_bloc`, while network operations ar
 
 The app includes comprehensive unit and widget tests. To run all tests:
 
-````flutter pub run build_runner build --delete-conflicting-outputs
+    ````flutter pub run build_runner build --delete-conflicting-outputs
 
 ## Modules Overview
 
