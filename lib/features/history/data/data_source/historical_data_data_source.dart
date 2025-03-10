@@ -1,4 +1,5 @@
 import 'package:ft/core/dio/dio_client.dart';
+import 'package:ft/core/exception/forex_exceptions.dart';
 import 'package:ft/features/history/data/response/historical_data_response.dart';
 import 'package:injectable/injectable.dart';
 
@@ -24,7 +25,7 @@ class HistoricalDataDataSource {
           )
           .toList();
     } else {
-      throw Exception('Failed to load historical data');
+      throw UnKnownException();
     }
   }
 }

@@ -4,6 +4,8 @@ sealed class TickerBlocState {}
 
 final class TickerBlocInitial extends TickerBlocState {}
 
+final class TickerErrorState extends TickerBlocState {}
+
 final class UpdateTickerState extends TickerBlocState {
   final PresentationTickerEntity? ticker;
 

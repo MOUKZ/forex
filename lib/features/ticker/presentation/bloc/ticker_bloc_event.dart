@@ -19,3 +19,7 @@ class UpdateTickerEvent extends TickerBlocEvent {
 
   UpdateTickerEvent(this.ticker);
 }
+
+class AddErrorEvent extends TickerBlocEvent {
+  AddErrorEvent();
+}

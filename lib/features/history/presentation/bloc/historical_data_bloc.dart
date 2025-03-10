@@ -18,7 +18,7 @@ class HistoricalDataBloc
         final list = await _historicalDataRepositoryUseCase('AAPL');
         emit(HistoricalDataWithData(list));
       } catch (e) {
-        //todod
+        emit(HistoricalDataErrorState());
       }
     });
   }

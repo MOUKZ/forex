@@ -87,6 +87,16 @@ class _HistoryPageState extends State<HistoryPage> {
                 ),
               ],
             );
+          } else if (state is HistoricalDataErrorState) {
+            return Center(
+              child: Text(
+                'filed to load historical data ',
+                style: const TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 14,
+                ),
+              ),
+            );
           } else {
             return const Center(child: CircularProgressIndicator());
           }

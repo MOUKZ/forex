@@ -29,6 +29,11 @@ class TickerBloc extends Bloc<TickerBlocEvent, TickerBlocState> {
     on<InitSubscription>(_onInitSubscription);
     on<CloseSubscription>(_onCloseSubscription);
     on<UpdateTickerEvent>(_onUpdateTickerEvent);
+    on<AddErrorEvent>(_onAddErrorEvent);
+  }
+
+  FutureOr<void> _onAddErrorEvent(AddErrorEvent event, emit) async {
+    emit(TickerErrorState());
   }
 
   FutureOr<void> _onUpdateTickerEvent(UpdateTickerEvent event, emit) async {
@@ -48,7 +53,7 @@ class TickerBloc extends Bloc<TickerBlocEvent, TickerBlocState> {
         add(UpdateTickerEvent(latestItem));
       });
     } catch (e) {
-      //TODO
+      add(AddErrorEvent());
     }
   }
 
@@ -56,7 +61,7 @@ class TickerBloc extends Bloc<TickerBlocEvent, TickerBlocState> {
     try {
       await _unSubscribeUseCase(event.symbol);
     } catch (e) {
-      //TODO
+      emit(TickerErrorState());
     }
   }
 

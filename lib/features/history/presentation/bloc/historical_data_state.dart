@@ -8,3 +8,5 @@ final class HistoricalDataWithData extends HistoricalDataState {
   List<HistoricalData> list;
   HistoricalDataWithData(this.list);
 }
+
+final class HistoricalDataErrorState extends HistoricalDataState {}
